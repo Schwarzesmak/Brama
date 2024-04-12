@@ -101,8 +101,6 @@
 										<h2 class="h5 text-black">Beretta</h2>
 									</td>
 									<td class="product-price">$144.000</td>
-									<input type="text" class="form-control text-center quantity-amount" value="1">
-									<td class="product-total">$144.000</td>
 									<td>
 										<div class="input-group mb-3 d-flex align-items-center quantity-container"
 											style="max-width: 120px;">
@@ -118,20 +116,20 @@
 													type="button">&plus;</button>
 											</div>
 										</div>
-
 									</td>
-									<td>$144.000</td>
+									<td class="product-total">$144.000</td>
 									<td><a href="#" class="btn btn-black btn-sm">X</a></td>
 								</tr>
+								
 
 								<tr>
 									<td class="product-thumbnail">
 										<img src="images/cuchillo-remove.png" alt="Image" class="img-fluid">
 									</td>
 									<td class="product-name">
-										<h2 class="h5 text-black">Cuchillo tactico</h2>
+										<h2 class="h5 text-black">Cuchillo táctico</h2>
 									</td>
-									<td>$38.990</td>
+									<td class="product-price">$38.990</td>
 									<td>
 										<div class="input-group mb-3 d-flex align-items-center quantity-container"
 											style="max-width: 120px;">
@@ -147,11 +145,11 @@
 													type="button">&plus;</button>
 											</div>
 										</div>
-
 									</td>
-									<td>$38.990</td>
+									<td class="product-total">$38.990</td>
 									<td><a href="#" class="btn btn-black btn-sm">X</a></td>
 								</tr>
+								
 							</tbody>
 						</table>
 					</div>
@@ -212,7 +210,51 @@
 	<script src="js/tiny-slider.js"></script>
 	<script src="js/custom.js"></script>
 
-	
+	<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const decreaseButtons = document.querySelectorAll('.decrease');
+    const increaseButtons = document.querySelectorAll('.increase');
+    const totalDisplay = document.querySelector('.text-black strong');
+
+    function updateTotal() {
+        let total = 0;
+        document.querySelectorAll('.product-total').forEach(function(element) {
+            total += parseFloat(element.textContent.replace('$', '').replace('.', ''));
+        });
+        totalDisplay.textContent = '$' + total.toLocaleString();
+    }
+
+    decreaseButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.stopImmediatePropagation();
+            const input = this.parentNode.parentNode.querySelector('.quantity-amount');
+            let quantity = parseInt(input.value);
+            if (quantity > 1) {
+                quantity--;
+                input.value = quantity;
+                const price = parseFloat(this.closest('tr').querySelector('.product-price').textContent.replace('$', '').replace('.', ''));
+                this.closest('tr').querySelector('.product-total').textContent = '$' + (price * quantity).toLocaleString();
+                updateTotal();
+            }
+        });
+    });
+
+    increaseButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.stopImmediatePropagation();
+            const input = this.parentNode.parentNode.querySelector('.quantity-amount');
+            let quantity = parseInt(input.value);
+            quantity++;
+            input.value = quantity;
+            const price = parseFloat(this.closest('tr').querySelector('.product-price').textContent.replace('$', '').replace('.', ''));
+            this.closest('tr').querySelector('.product-total').textContent = '$' + (price * quantity).toLocaleString();
+            updateTotal();
+        });
+    });
+});
+
+		</script>
+		
 </body>
 
 </html>
