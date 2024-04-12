@@ -65,7 +65,18 @@
 								<p class="mb-4">Brama es más que una tienda de armamento y seguridad, es un socio confiable que busca la protección, entretencion y calidad.
 									Con un inventario exhaustivo y un enfoque en soluciones personalizadas, es el destino predilecto para individuos, familias y organizaciones que valoran la seguridad como una prioridad máxima.
 								</p>
-								<p><a href="" class="btn btn-secondary me-2">Correo</a><a href="#" class="btn btn-white-outline">Direccion</a></p> 
+								<p>
+									<a href="" class="btn btn-secondary me-2">Correo</a>
+									<a href="#" id="direccionBtn" class="btn btn-white-outline">Direccion</a>
+								  </p>
+
+								<script>
+
+									document.getElementById('direccionBtn').addEventListener('click', function(event) {
+										event.preventDefault();  // Esto evita que el navegador siga el enlace
+										alert('Nos encontramos en Mall Plaza Trebol, num #71 segundo piso');
+									});
+									</script>
 										<!-- Brian, en lo que hice arriba la idea es que al pasar el cursor por correo aparezca encima automaticamente como un correo de nosotros, y al direccion no se si hacerlo igual que wsp o que nos mande a un link de google maps xD -->
 							</div>
 						</div>
@@ -116,8 +127,8 @@
 									<div class="icon">
 										<img src="images/support.svg" alt="Image" class="imf-fluid">
 									</div>
-									<h3>24/7 Support</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<h3>Atención al cliente</h3>
+									<p>Nos puedes mandar un correo electronico a armeria@brama.cl, presencial, o via Whatsapp</p>
 								</div>
 							</div>
 
