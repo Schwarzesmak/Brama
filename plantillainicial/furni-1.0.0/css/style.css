@@ -849,3 +849,37 @@ h1 {
         font-size: 18px;
     }
 }
+.btn-size {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #627254; /* verde oscuro */
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-size:hover {
+  background-color: #76885B; /* verde claro */
+}
+.btn-success {
+  background-color: #28a745; /* Color verde Bootstrap */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s; /* Suaviza la transición de color y transformación */
+  cursor: pointer;
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.btn-success:hover, .btn-success:focus {
+  background-color: #218838; /* Un verde un poco más oscuro */
+  color: white;
+  transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra para dar efecto de elevación */
+}
