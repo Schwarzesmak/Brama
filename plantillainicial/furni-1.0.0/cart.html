@@ -160,7 +160,8 @@
 				<div class="col-md-6">
 					<div class="row mb-5">
 						<div class="col-md-6 mb-3 mb-md-0">
-							<button class="btn btn-black btn-sm btn-block">Actualizar carro de compra</button>
+							<button class="btn btn-black btn-sm btn-block" id="updateCartButton">Actualizar carro de compra</button>
+
 						</div>
 						<div class="col-md-6">
 							<a href="shop.html" class="btn btn-black btn-sm btn-block">Continuar comprando</a>
@@ -180,7 +181,7 @@
 									<span class="text-black">Subtotal</span>
 								</div>
 								<div class="col-md-6 text-right">
-									<strong class="text-black">$193.000</strong>
+									<strong class="text-black" id="subtotal">$0</strong>
 								</div>
 							</div>
 							<div class="row mb-5">
@@ -188,9 +189,10 @@
 									<span class="text-black">Total</span>
 								</div>
 								<div class="col-md-6 text-right">
-									<strong class="text-black">$193.000</strong>
+									<strong class="text-black" id="total">$0</strong>
 								</div>
 							</div>
+							
 
 							<div class="row">
 								<div class="col-md-12">
@@ -211,6 +213,92 @@
 	<script src="js/custom.js"></script>
 
 	<script>
+		
+		document.addEventListener("DOMContentLoaded", function() {
+    const updateCartButton = document.getElementById('updateCartButton');
+    const subtotalDisplay = document.querySelector('#subtotal');
+    const totalDisplay = document.querySelector('#total');
+
+    updateCartButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        updateQuantities();
+    });
+
+    function updateQuantities() {
+        let subtotal = 0;
+        document.querySelectorAll('.quantity-amount').forEach(input => {
+            const quantity = parseInt(input.value);
+            const price = parseFloat(input.closest('tr').querySelector('.product-price').textContent.replace('$', '').replace('.', ''));
+            const totalElement = input.closest('tr').querySelector('.product-total');
+            const rowTotal = price * quantity;
+            totalElement.textContent = '$' + rowTotal.toLocaleString();
+            subtotal += rowTotal;
+        });
+        updateTotals(subtotal);
+    }
+
+    function updateTotals(subtotal) {
+        const total = subtotal; // Aquí se puede añadir impuestos, descuentos, etc.
+        subtotalDisplay.textContent = '$' + subtotal.toLocaleString();
+        totalDisplay.textContent = '$' + total.toLocaleString();
+    }
+
+    function handleDecreaseIncrease(isIncreasing, buttonElement) {
+        const input = buttonElement.parentNode.querySelector('.quantity-amount');
+        let quantity = parseInt(input.value);
+        quantity = isIncreasing ? quantity + 1 : (quantity > 1 ? quantity - 1 : quantity);
+        input.value = quantity;
+        updateQuantities();
+    }
+
+    document.querySelectorAll('.decrease').forEach(button => button.addEventListener('click', function() {
+        handleDecreaseIncrease(false, this);
+    }));
+
+    document.querySelectorAll('.increase').forEach(button => button.addEventListener('click', function() {
+        handleDecreaseIncrease(true, this);
+    }));
+
+    // Llamada inicial para calcular el total al cargar la página
+    updateQuantities();
+});
+
+
+
+
+
+
+// Carrito de compra actualizarlo
+		document.addEventListener("DOMContentLoaded", function() {
+    const updateCartButton = document.getElementById('updateCartButton');
+
+    updateCartButton.addEventListener('click', function(event) {
+        event.preventDefault(); // Evitar que el botón envíe un formulario si está dentro de uno
+        document.querySelectorAll('.quantity-amount').forEach(input => {
+            const quantity = parseInt(input.value); // Obtiene el valor actual del input
+            const price = parseFloat(input.closest('tr').querySelector('.product-price').textContent.replace('$', '').replace('.', ''));
+            const totalElement = input.closest('tr').querySelector('.product-total');
+            totalElement.textContent = '$' + (price * quantity).toLocaleString(); // Actualiza el total de la fila
+        });
+        updateTotal(); // Actualiza el total general del carro
+    });
+
+    function updateTotal() {
+        let total = 0;
+        document.querySelectorAll('.product-total').forEach(function(element) {
+            total += parseFloat(element.textContent.replace('$', '').replace('.', ''));
+        });
+        const totalDisplay = document.querySelector('.text-black strong');
+        totalDisplay.textContent = '$' + total.toLocaleString();
+    }
+});
+
+
+
+
+
+
+// Suma y conteo automatico, pero tiene un bugg
 document.addEventListener("DOMContentLoaded", function() {
     const decreaseButtons = document.querySelectorAll('.decrease');
     const increaseButtons = document.querySelectorAll('.increase');
@@ -224,34 +312,44 @@ document.addEventListener("DOMContentLoaded", function() {
         totalDisplay.textContent = '$' + total.toLocaleString();
     }
 
-    decreaseButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.stopImmediatePropagation();
-            const input = this.parentNode.parentNode.querySelector('.quantity-amount');
-            let quantity = parseInt(input.value);
-            if (quantity > 1) {
-                quantity--;
-                input.value = quantity;
-                const price = parseFloat(this.closest('tr').querySelector('.product-price').textContent.replace('$', '').replace('.', ''));
-                this.closest('tr').querySelector('.product-total').textContent = '$' + (price * quantity).toLocaleString();
-                updateTotal();
-            }
+    function setupButtonListeners() {
+        decreaseButtons.forEach(button => {
+            button.removeEventListener('click', handleDecrease);
+            button.addEventListener('click', handleDecrease);
         });
-    });
 
-    increaseButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.stopImmediatePropagation();
-            const input = this.parentNode.parentNode.querySelector('.quantity-amount');
-            let quantity = parseInt(input.value);
-            quantity++;
+        increaseButtons.forEach(button => {
+            button.removeEventListener('click', handleIncrease);
+            button.addEventListener('click', handleIncrease);
+        });
+    }
+
+    function handleDecrease(event) {
+        const input = this.parentNode.parentNode.querySelector('.quantity-amount');
+        let quantity = parseInt(input.value);
+        if (quantity > 1) {
+            quantity--;
             input.value = quantity;
             const price = parseFloat(this.closest('tr').querySelector('.product-price').textContent.replace('$', '').replace('.', ''));
             this.closest('tr').querySelector('.product-total').textContent = '$' + (price * quantity).toLocaleString();
             updateTotal();
-        });
-    });
+        }
+    }
+
+    function handleIncrease(event) {
+        const input = this.parentNode.parentNode.querySelector('.quantity-amount');
+        let quantity = parseInt(input.value);
+        quantity++;
+        input.value = quantity;
+        const price = parseFloat(this.closest('tr').querySelector('.product-price').textContent.replace('$', '').replace('.', ''));
+        this.closest('tr').querySelector('.product-total').textContent = '$' + (price * quantity).toLocaleString();
+        updateTotal();
+    }
+
+    setupButtonListeners();
 });
+
+
 
 		</script>
 		
