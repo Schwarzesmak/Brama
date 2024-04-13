@@ -709,3 +709,143 @@ textarea {
     height: 50px;
     border-radius: 50%;
     background: rgba(59, 93, 80, 0.2); }
+
+    /*Colores para Vunitario*/
+    :root {
+      --dark-green: #627254;
+      --light-green: #76885B;
+      --gray: #DDDDDD;
+      --light-gray: #EEEEEE;
+  }
+  
+  body {
+      background-color: var(--light-gray);
+      color: var(--dark-green);
+  }
+  
+  h1 {
+      color: var(--light-green);
+  }
+  
+  .text-muted {
+      color: var(--gray);
+  }
+  
+  .description {
+      background-color: var(--gray);
+      padding: 15px;
+      border-radius: 8px;
+      color: var(--dark-green); /* Ensure text is readable on the gray background */
+  }
+  
+  .btn-success {
+      background-color: var(--light-green);
+      border: none; /* Remove default border */
+  }
+  
+  .btn-success:hover {
+      background-color: var(--dark-green);
+      color: var(--light-gray); /* Change text color on hover for better readability */
+  }
+  
+
+  /* Para agrandar imagen*/
+.img-fluid {
+  transition: transform 0.5s ease; /* Transición suave */
+  cursor: pointer; /* Cambia el cursor para indicar interactividad */
+}
+
+.img-fluid:hover {
+  transform: scale(1.1); /* Aumenta el tamaño de la imagen al pasar el ratón */
+}
+
+
+/* Importar Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #EEEEEE; /* Color de fondo general */
+}
+
+h1 {
+    color: #627254; /* Verde oscuro */
+    font-weight: 700;
+}
+
+.description, .text-muted {
+    color: #76885B; /* Verde claro */
+}
+
+/* Tarjeta del producto */
+.card {
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra ligera */
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Elevación al pasar el ratón */
+}
+
+/* Botones */
+.btn-success {
+    background-color: #627254; /* Verde oscuro */
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #76885B; /* Verde claro */
+}
+
+/* Estilo para la imagen */
+.img-fluid {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border-radius: 8px; /* Bordes redonde
+
+
+    .hero {
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+    color: #fff;
+}
+
+.intro-excerpt h1 {
+    font-size: 48px; /* Ajusta según necesidad */
+    color: #EEEEEE; /* Blanco */
+    font-weight: bold;
+}
+
+.intro-excerpt h3 {
+    font-size: 24px; /* Ajusta según necesidad */
+    margin-bottom: 20px;
+    color: #DDDDDD; /* Plomo */
+}
+
+.btn-primary {
+    background-color: #627254; /* Verde oscuro */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #76885B; /* Verde claro */
+}
+
+@media (max-width: 992px) {
+    .hero {
+        padding: 50px 0;
+    }
+
+    .intro-excerpt h1 {
+        font-size: 36px;
+    }
+
+    .intro-excerpt h3 {
+        font-size: 18px;
+    }
+}
