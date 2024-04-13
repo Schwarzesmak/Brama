@@ -31,6 +31,8 @@
 	<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
 		<div class="container">
+			<div id="cart-items" class="container"></div>
+
 			<a class="navbar-brand" href="index.html">Brama<span>.</span></a>
 
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
@@ -335,6 +337,12 @@ document.addEventListener("DOMContentLoaded", function() {
             updateTotal();
         }
     }
+	function addToCart(productName, price, imageUrl) {
+    let products = JSON.parse(localStorage.getItem('cart')) || [];
+    products.push({productName, price, imageUrl});
+    localStorage.setItem('cart', JSON.stringify(products));
+    window.location.href = 'cart.html';
+}
 
     function handleIncrease(event) {
         const input = this.parentNode.parentNode.querySelector('.quantity-amount');
@@ -348,6 +356,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
     setupButtonListeners();
 });
+document.addEventListener('DOMContentLoaded', () => {
+    let cartItemsContainer = document.getElementById('cart-items');
+    let products = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    if (products.length === 0) {
+        cartItemsContainer.innerHTML = "<p>No hay productos en el carrito.</p>";
+    } else {
+        products.forEach(product => {
+            cartItemsContainer.innerHTML += `
+                <div class="cart-item">
+                    <img src="${product.imageUrl}" alt="${product.productName}" style="width: 100px;">
+                    <h3>${product.productName}</h3>
+                    <p>${product.price}</p>
+                </div>
+            `;
+        });
+    }
+});
+
 
 
 
