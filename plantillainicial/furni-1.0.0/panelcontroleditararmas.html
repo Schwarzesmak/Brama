@@ -8,163 +8,174 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
-            color: #343a40;
+            background-color: #DDDDDD;
+            color: #333;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .container {
-            margin-top: 20px;
             padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        .btn-custom {
-            background-color: #495057;
-            color: #fff;
+        .btn-primary {
+            background-color: #627254;
+            color: #FFFFFF;
         }
-        .btn-custom:hover {
-            background-color: #343a40;
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: #76885B;
+            color: #FFFFFF;
         }
-        .preview-img {
+        .form-control {
+            background-color: #FFFFFF;
+            border: 1px solid #DDDDDD;
+            color: #333;
+        }
+        img.preview-img {
             width: 100px;
-            height: auto;
-        }
-        .header {
-            padding-bottom: 10px;
-            border-bottom: 1px solid #e9ecef;
-            margin-bottom: 20px;
-        }
-        table img {
-            width: 50px;
             height: auto;
         }
     </style>
 </head>
 <body>
+    
 <div class="container">
-    <div class="header">
-        <h1>Editar Armas y Ropa Militar</h1>
-    </div>
+    <h1>Editar Armas</h1>
+    <form id="formArmas">
+        <div class="mb-3">
+            <label for="armaNombre" class="form-label">Nombre del Arma</label>
+            <input type="text" class="form-control" id="armaNombre" placeholder="Ingrese el nombre del arma">
+        </div>
+        <div class="mb-3">
+            <label for="ColorNombre" class="form-label">Color del arma</label>
+            <input type="text" class="form-control" id="ColorNombre" placeholder="Ingrese el color del arma">
+        </div>
+        <div class="mb-3">
+            <label for="armaCalibre" class="form-label">Calibre</label>
+            <input type="text" class="form-control" id="armaCalibre" placeholder="Ingrese el calibre del arma">
+        </div>
+        <div class="mb-3">
+            <label for="ArmaMateriales" class="form-label">Materiales</label>
+            <input type="text" class="form-control" id="ArmaMateriales" placeholder="Ingrese el material del arma">
+        </div>
+        <div class="mb-3">
+            <label for="imagenArma" class="form-label">Cargar imagen del arma</label>
+            <input type="file" class="form-control" id="imagenArma" accept="image/*">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="agregarArma()">Agregar Arma</button>
+        <a href="panelcontrol.html" class="btn btn-primary">Volver</a>
 
-    <!-- Armas Section -->
-    <section>
-        <h2>Editar Armas</h2>
-        <form id="formArmas">
-            <div class="mb-3">
-                <label for="armaNombre" class="form-label">Nombre del Arma</label>
-                <input type="text" class="form-control" id="armaNombre" placeholder="Ingrese el nombre del arma">
-            </div>
-            <div class="mb-3">
-                <label for="ColorNombre" class="form-label">Color del arma</label>
-                <input type="text" class="form-control" id="ColorNombre" placeholder="Ingrese el color del arma">
-            </div>
-            <div class="mb-3">
-                <label for="armaCalibre" class="form-label">Calibre</label>
-                <input type="text" class="form-control" id="armaCalibre" placeholder="Ingrese el calibre del arma">
-            </div>
-            <div class="mb-3">
-                <label for="ArmaMateriales" class="form-label">Materiales</label>
-                <input type="text" class="form-control" id="ArmaMateriales" placeholder="Ingrese el material del arma">
-            </div>
-            <div class="mb-3">
-                <label for="imagenArma" class="form-label">Cargar imagen del arma</label>
-                <input type="file" class="form-control" id="imagenArma" accept="image/*">
-            </div>
-            <button type="button" class="btn btn-custom" onclick="agregarItem('arma')">Agregar Arma</button>
-        </form>
+    </form>
 
-        <table class="table mt-3">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Color</th>
-                    <th>Calibre</th>
-                    <th>Materiales</th>
-                    <th>Imagen</th>
-                </tr>
-            </thead>
-            <tbody id="tablaArmas">
-            </tbody>
-        </table>
-    </section>
+    <h2>Estado de Armas</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Color</th>
+                <th>Calibre</th>
+                <th>Materiales</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody id="tablaArmas">
+        </tbody>
+    </table>
 
-    <!-- Ropa Militar Section -->
-    <section class="mt-4">
-        <h2>Editar Ropa Militar</h2>
-        <form id="formRopaMilitar">
-            <div class="mb-3">
-                <label for="ropaNombre" class="form-label">Nombre de la Prenda</label>
-                <input type="text" class="form-control" id="ropaNombre" placeholder="Ingrese el nombre de la prenda">
-            </div>
-            <div class="mb-3">
-                <label for="ropaTipo" class="form-label">Tipo de Prenda</label>
-                <input type="text" class="form-control" id="ropaTipo" placeholder="Ingrese el tipo de prenda">
-            </div>
-            <div class="mb-3">
-                <label for="ropaMaterial" class="form-label">Material</label>
-                <input type="text" class="form-control" id="ropaMaterial" placeholder="Ingrese el material">
-            </div>
-            <div class="mb-3">
-                <label for="ropaImagen" class="form-label">Cargar imagen de la prenda</label>
-                <input type="file" class="form-control" id="ropaImagen" accept="image/*">
-            </div>
-            <button type="button" class="btn btn-custom" onclick="agregarItem('ropa')">Agregar Ropa</button>
-        </form>
-
-        <table class="table mt-3">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Tipo</th>
-                    <th>Material</th>
-                    <th>Imagen</th>
-                </tr>
-            </thead>
-            <tbody id="tablaRopa">
-            </tbody>
-        </table>
-    </section>
-</div>
+    <h1>Editar Ropa Militar</h1>
+    <form id="formRopaMilitar">
+        <div class="mb-3">
+            <label for="ropaNombre" class="form-label">Nombre de la Prenda</label>
+            <input type="text" class="form-control" id="ropaNombre" placeholder="Ingrese el nombre de la prenda">
+        </div>
+        <div class="mb-3">
+            <label for="ropaTipo" class="form-label">Tipo de Prenda</label>
+            <input type="text" class="form-control" id="ropaTipo" placeholder="Ingrese el tipo de prenda">
+        </div>
+        <div class="mb-3">
+            <label for="ropaMaterial" class="form-label">Material</label>
+            <input type="text" class="form-control" id="ropaMaterial" placeholder="Ingrese el material">
+        </div>
+        <div class="mb-3">
+            <label for="ropaImagen" class="form-label">Cargar imagen de la prenda</label>
+            <input type="file" class="form-control" id="ropaImagen" accept="image/*">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="agregarRopa()">Agregar Ropa</button>
+        <a href="panelcontrol.html" class="btn btn-primary">Volver</a>
+    </form>
+    
+    <h2>Estado de Ropa Militar</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Material</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody id="tablaRopa">
+        </tbody>
+    </table>
+    
 
 <script>
-function agregarItem(tipo) {
-    const nombre = document.getElementById(`${tipo}Nombre`).value;
-    const tabla = document.getElementById(`tabla${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`);
-    const imagenFile = document.getElementById(`${tipo}Imagen`).files[0];
+    function agregarArma() {
+        const nombre = document.getElementById('armaNombre').value;
+        const color = document.getElementById('ColorNombre').value;
+        const calibre = document.getElementById('armaCalibre').value;
+        const materiales = document.getElementById('ArmaMateriales').value;
+        const imagenFile = document.getElementById('imagenArma').files[0];
+        const tablaArmas = document.getElementById('tablaArmas');
 
-    let detalles = {};
-    if (tipo === 'arma') {
-        detalles = {
-            color: document.getElementById('ColorNombre').value,
-            calibre: document.getElementById('armaCalibre').value,
-            materiales: document.getElementById('ArmaMateriales').value
-        };
-    } else {
-        detalles = {
-            tipo: document.getElementById('ropaTipo').value,
-            material: document.getElementById('ropaMaterial').value
-        };
+        if (imagenFile) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${nombre}</td><td>${color}</td><td>${calibre}</td><td>${materiales}</td><td><img class="preview-img" src="${e.target.result}"></td>`;
+                tablaArmas.appendChild(tr);
+            };
+            reader.readAsDataURL(imagenFile);
+        } else {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${nombre}</td><td>${color}</td><td>${calibre}</td><td>${materiales}</td><td>Sin imagen</td>`;
+            tablaArmas.appendChild(tr);
+        }
     }
 
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        const tr = document.createElement('tr');
-        const imagenHtml = `<td><img class="preview-img" src="${e.target.result}" alt="Imagen de ${tipo}"></td>`;
-        const noImagenHtml = `<td>No Image</td>`;
+    function agregarRopa() {
+        const nombre = document.getElementById('ropaNombre').value;
+        const tipo = document.getElementById('ropaTipo').value;
+        const material = document.getElementById('ropaMaterial').value;
+        const tablaRopa = document.getElementById('tablaRopa');
 
-        tr.innerHTML = `<td>${nombre}</td>` +
-            (tipo === 'arma' ? `<td>${detalles.color}</td><td>${detalles.calibre}</td><td>${detalles.materiales}</td>` : `<td>${detalles.tipo}</td><td>${detalles.material}</td>`) +
-            (imagenFile ? imagenHtml : noImagenHtml);
-        tabla.appendChild(tr);
-    };
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${nombre}</td><td>${tipo}</td><td>${material}</td>`;
+        tablaRopa.appendChild(tr);
+    }
+</script>
+<script>
+
+function agregarRopa() {
+    const nombre = document.getElementById('ropaNombre').value;
+    const tipo = document.getElementById('ropaTipo').value;
+    const material = document.getElementById('ropaMaterial').value;
+    const imagenFile = document.getElementById('ropaImagen').files[0];
+    const tablaRopa = document.getElementById('tablaRopa');
 
     if (imagenFile) {
-        reader.readAsDataURL(imagenFile);
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${nombre}</td><td>${tipo}</td><td>${material}</td><td><img class="preview-img" src="${e.target.result}" alt="Imagen de la prenda"></td>`;
+            tablaRopa.appendChild(tr);
+        };
+        reader.readAsDataURL(imagenFile);   
     } else {
-        reader.onload(null); // manually trigger onload
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${nombre}</td><td>${tipo}</td><td>${material}</td><td>Sin imagen</td>`;
+        tablaRopa.appendChild(tr);
     }
 }
+
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
