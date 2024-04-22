@@ -1,0 +1,52 @@
+<!-- Ingreso de rut-->  
+<div>
+    <label for="rut">Ingrese rut</label>
+    <input type="text" id="idrut" name="rut" placeholder="123456789-0" minleght="9" maxlength="9" required>
+    </div>
+
+<!-- Ingreso de Nombres-->  
+<div>
+    <label for="nom">Ingrese nombre</label>
+    <input type="text" id="idnom" name="nom" required pattern="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvxyzáÁéÉíÍóÓúÚ" maxlength="25">
+    </div>
+<!-- Ingreso de Apellidos-->  
+<div>
+    <label for="ape">Ingrese Apellido</label>
+    <input type="text" id="idape" name="ape" required pattern="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvxyzáÁéÉíÍóÓúÚ">
+    </div>
+
+<!-- Ingrese correo electronico-->  
+<div>
+    <label for="mail">Ingrese correo</label>
+    <input type="email" id="idmail" name="email" required>
+    </div>
+
+<!-- Ingrese su contraseña-->  
+<div>
+    <label for="psw1">Password</label>
+    <input type="password" id="idpsw1" name="psw1" required>
+    </div>
+
+<!-- Reingrese su contraseña-->  
+<div>
+    <label for="psw2">Reingrese su Password</label>
+    <input type="password" id="idpsw2" name="psw2" required>
+    </div>
+<!-- Seleccion de sexo -->  
+<div>
+<label for="sex">Seleccione sexo</label>
+<input type="radio" id="idsex" name="sex" value="f" required>Femenino
+<input type="radio" id="idsex" name="sex" value="M" required>Masculino
+<input type="radio" id="idsex" name="sex" value="O" required>Otro
+</div>
+
+<!-- Fecha de nacimiento -->  
+<div>
+    <label for="ncto">Fecha de nacimiento</label>
+    <input type="date" id="idncto" name="psw2" required min="1900-04-23">
+    </div>
+<div>
+    <input type="submit" value="Registrar">
+    <input type="submit" value="Limpiar">
+</div>
+    
