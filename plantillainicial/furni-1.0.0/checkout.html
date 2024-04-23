@@ -68,203 +68,214 @@
 	<!-- End Hero Section -->
 
 	<div class="untree_co-section">
-		<div class="container">
-			<div class="row mb-5">
-				<div class="col-md-12">
-					<div class="border p-4 rounded" role="alert">
-						¿Cliente antiguo? <a href="#">Click aqui</a> para Iniciar Sesión
+		<form action="thankyou.html" method="get">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-md-12">
+						<div class="border p-4 rounded" role="alert">
+							¿Cliente antiguo? <a href="#">Click aqui</a> para Iniciar Sesión
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 mb-5 mb-md-0">
-					<h2 class="h3 mb-3 text-black">Detalles de factura</h2>
-					<div class="p-3 p-lg-5 border bg-white">
-						<div class="form-group">
-							<label for="c_country" class="text-black">Región <span class="text-danger">*</span></label>
-							<select id="c_country" class="form-control">
-								<option value="1">Seleccione una Región</option>
-								<option value="2">Región del Ñuble</option>
-								<option value="3">Región del Biobío</option>
-								<option value="4">Región de la Araucanía</option>
-							</select>
-						</div>
-						<div class="form-group row">
-							<div class="col-md-6">
-								<label for="c_fname" class="text-black">Primer Nombre <span
-										class="text-danger">*</span></label>
-								<input type="text" class="form-control" id="c_fname" name="c_fname">
-							</div>
-							<div class="col-md-6">
-								<label for="c_lname" class="text-black">Segundo Nombre <span
-										class="text-danger">*</span></label>
-								<input type="text" class="form-control" id="c_lname" name="c_lname">
-							</div>
-						</div>
+				<div class="row">
+					<div class="col-md-6 mb-5 mb-md-0">
+						<h2 class="h3 mb-3 text-black">Detalles de factura</h2>
+						<div class="p-3 p-lg-5 border bg-white">
 
-						<div class="form-group row">
+							<div class="form-group">
+								<label for="c_country" class="text-black">Región <span
+										class="text-danger">*</span></label>
+								<select id="c_country" class="form-control" name="region" required>
+									<option value="1">Seleccione una Región</option>
+									<option value="2">Región del Ñuble</option>
+									<option value="3">Región del Biobío</option>
+									<option value="4">Región de la Araucanía</option>
+								</select>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label for="c_fname" class="text-black">Primer Nombre <span
+											class="text-danger">*</span></label>
+									<input type="text" class="form-control" id="c_fname" name="c_fname" required
+										placeholder="Ingrese su primer Nombre">
+								</div>
+								<div class="col-md-6">
+									<label for="c_lname" class="text-black">Segundo Nombre <span
+											class="text-danger">*</span></label>
+									<input type="text" class="form-control" id="c_lname" name="c_lname" required
+										placeholder="Ingrese su segundo Nombre">
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label for="c_companyname" class="text-black">Apellidos </label>
+									<input type="text" class="form-control" id="c_apellido" name="c_apellido" required
+										placeholder="Ingrese sus Apellidos">
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label for="c_address" class="text-black">Dirección <span
+											class="text-danger">*</span></label>
+									<input type="text" class="form-control" id="c_address" name="c_address" required
+										placeholder="Dirección donde desea recibir su pedido">
+								</div>
+							</div>
+
+							<div class="form-group mt-3">
+								<input type="text" class="form-control" required
+									placeholder="Departamento, N° Pasaje. (opcional)">
+							</div>
+
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label for="c_postal_zip" class="text-black">Codigo Postal <span
+											class="text-danger">*</span></label>
+									<input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip"
+										required placeholder="Codigo postal de su localidad">
+								</div>
+							</div>
+
+							<div class="form-group row mb-5">
+								<div class="col-md-6">
+									<label for="c_email_address" class="text-black">Correo electrónico <span
+											class="text-danger">*</span></label>
+									<input type="email" class="form-control" id="c_email_address" name="c_email_address"
+										placeholder="Ingrese su Correo electrónico" required>
+								</div>
+								<div class="col-md-6">
+									<label for="c_phone" class="text-black">Celular <span
+											class="text-danger">*</span></label>
+									<input type="text" class="form-control" id="c_phone" name="c_phone" required
+										placeholder="Numero de celular">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="c_order_notes" class="text-black">Información adicional</label>
+								<textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5"
+									class="form-control"
+									placeholder="Escribe tu Información adicional sobre el pedido aquí..."></textarea>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-md-6">
+
+						<div class="row mb-5">
 							<div class="col-md-12">
-								<label for="c_companyname" class="text-black">Apellidos </label>
-								<input type="text" class="form-control" id="c_companyname" name="c_companyname">
+								<h2 class="h3 mb-3 text-black">Cupón</h2>
+								<div class="p-3 p-lg-5 border bg-white">
+
+									<label for="c_code" class="text-black mb-3">Ingresa un cupón si posees
+										uno</label>
+									<div class="input-group w-75 couponcode-wrap">
+										<input type="text" class="form-control me-2" id="c_code"
+											placeholder="Canjea un cupón aquí" aria-label="Coupon Code"
+											aria-describedby="button-addon2">
+										<div class="input-group-append">
+											<button class="btn btn-black btn-sm" type="button"
+												id="button-addon2">Aplicar</button>
+										</div>
+									</div>
+
+								</div>
 							</div>
 						</div>
 
-						<div class="form-group row">
+						<div class="row mb-5">
 							<div class="col-md-12">
-								<label for="c_address" class="text-black">Dirección <span
-										class="text-danger">*</span></label>
-								<input type="text" class="form-control" id="c_address" name="c_address"
-									placeholder="Dirección donde desea recibir su pedido">
+								<h2 class="h3 mb-3 text-black">Tu orden</h2>
+								<div class="p-3 p-lg-5 border bg-white">
+									<table class="table site-block-order-table mb-5">
+										<thead>
+											<th>Producto</th>
+											<th>Total</th>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Compra N° 1 <strong class="mx-2">x</strong> 1</td>
+												<td>$100.000</td>
+											</tr>
+											<tr>
+												<td>Compra N° 2 <strong class="mx-2">x</strong> 3</td>
+												<td>$75.000</td>
+											</tr>
+											<tr>
+												<td class="text-black font-weight-bold"><strong>Subtotal del
+														carrito</strong></td>
+												<td class="text-black">$175.000</td>
+											</tr>
+											<tr>
+												<td class="text-black font-weight-bold"><strong>Total del
+														pedido</strong>
+												</td>
+												<td class="text-black font-weight-bold"><strong>$175.000</strong></td>
+											</tr>
+										</tbody>
+									</table>
+
+									<div class="border p-3 mb-3">
+										<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse"
+												href="#collapsebank" role="button" aria-expanded="false"
+												aria-controls="collapsebank">Transferencia bancaria directa</a></h3>
+
+										<div class="collapse" id="collapsebank">
+											<div class="py-2">
+												<p class="mb-0">Realice su pago directamente en nuestra cuenta bancaria.
+													Utilice su ID de pedido como referencia de pago. Su pedido no se
+													enviará
+													hasta que los fondos se hayan liquidado en nuestra cuenta.</p>
+											</div>
+										</div>
+									</div>
+
+									<div class="border p-3 mb-3">
+										<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse"
+												href="#collapsecheque" role="button" aria-expanded="false"
+												aria-controls="collapsecheque">Pago en Cheque</a></h3>
+
+										<div class="collapse" id="collapsecheque">
+											<div class="py-2">
+												<p class="mb-0">Realice su pago directamente en nuestra cuenta bancaria.
+													Utilice su ID de pedido como referencia de pago. Su pedido no se
+													enviará
+													hasta que los fondos se hayan liquidado en nuestra cuenta.</p>
+											</div>
+										</div>
+									</div>
+
+									<div class="border p-3 mb-5">
+										<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse"
+												href="#collapsepaypal" role="button" aria-expanded="false"
+												aria-controls="collapsepaypal">Paypal</a></h3>
+
+										<div class="collapse" id="collapsepaypal">
+											<div class="py-2">
+												<p class="mb-0">Realice su pago directamente en nuestra cuenta bancaria.
+													Utilice su ID de pedido como referencia de pago. Su pedido no se
+													enviará
+													hasta que los fondos se hayan liquidado en nuestra cuenta.</p>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<input type="submit" value="Realizar pedido"
+											class="btn btn-black btn-lg py-3 btn-block">
+									</div>
+
+								</div>
 							</div>
-						</div>
-
-						<div class="form-group mt-3">
-							<input type="text" class="form-control" placeholder="Departamento, N° Pasaje. (opcional)">
-						</div>
-
-						<div class="form-group row">
-							<div class="col-md-6">
-								<label for="c_postal_zip" class="text-black">Codigo Postal <span
-										class="text-danger">*</span></label>
-								<input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
-							</div>
-						</div>
-
-						<div class="form-group row mb-5">
-							<div class="col-md-6">
-								<label for="c_email_address" class="text-black">Correo electrónico <span
-										class="text-danger">*</span></label>
-								<input type="text" class="form-control" id="c_email_address" name="c_email_address">
-							</div>
-							<div class="col-md-6">
-								<label for="c_phone" class="text-black">Celular <span
-										class="text-danger">*</span></label>
-								<input type="text" class="form-control" id="c_phone" name="c_phone"
-									placeholder="Numero de celular">
-							</div>
-						</div>
-
-
-
-
-
-
-						<div class="form-group">
-							<label for="c_order_notes" class="text-black">Información adicional</label>
-							<textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control"
-								placeholder="Escribe tu Información adicional sobre el pedido aquí..."></textarea>
 						</div>
 
 					</div>
 				</div>
-				<div class="col-md-6">
-
-					<div class="row mb-5">
-						<div class="col-md-12">
-							<h2 class="h3 mb-3 text-black">Cupón</h2>
-							<div class="p-3 p-lg-5 border bg-white">
-
-								<label for="c_code" class="text-black mb-3">Ingresa un cupón si posees uno</label>
-								<div class="input-group w-75 couponcode-wrap">
-									<input type="text" class="form-control me-2" id="c_code"
-										placeholder="Canjea un cupón aquí" aria-label="Coupon Code"
-										aria-describedby="button-addon2">
-									<div class="input-group-append">
-										<button class="btn btn-black btn-sm" type="button"
-											id="button-addon2">Aplicar</button>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-					<div class="row mb-5">
-						<div class="col-md-12">
-							<h2 class="h3 mb-3 text-black">Tu orden</h2>
-							<div class="p-3 p-lg-5 border bg-white">
-								<table class="table site-block-order-table mb-5">
-									<thead>
-										<th>Producto</th>
-										<th>Total</th>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Compra N° 1 <strong class="mx-2">x</strong> 1</td>
-											<td>$100.000</td>
-										</tr>
-										<tr>
-											<td>Compra N° 2 <strong class="mx-2">x</strong> 3</td>
-											<td>$75.000</td>
-										</tr>
-										<tr>
-											<td class="text-black font-weight-bold"><strong>Subtotal del
-													carrito</strong></td>
-											<td class="text-black">$175.000</td>
-										</tr>
-										<tr>
-											<td class="text-black font-weight-bold"><strong>Total del pedido</strong>
-											</td>
-											<td class="text-black font-weight-bold"><strong>$175.000</strong></td>
-										</tr>
-									</tbody>
-								</table>
-
-								<div class="border p-3 mb-3">
-									<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse"
-											href="#collapsebank" role="button" aria-expanded="false"
-											aria-controls="collapsebank">Transferencia bancaria directa</a></h3>
-
-									<div class="collapse" id="collapsebank">
-										<div class="py-2">
-											<p class="mb-0">Realice su pago directamente en nuestra cuenta bancaria.
-												Utilice su ID de pedido como referencia de pago. Su pedido no se enviará
-												hasta que los fondos se hayan liquidado en nuestra cuenta.</p>
-										</div>
-									</div>
-								</div>
-
-								<div class="border p-3 mb-3">
-									<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse"
-											href="#collapsecheque" role="button" aria-expanded="false"
-											aria-controls="collapsecheque">Pago en Cheque</a></h3>
-
-									<div class="collapse" id="collapsecheque">
-										<div class="py-2">
-											<p class="mb-0">Realice su pago directamente en nuestra cuenta bancaria.
-												Utilice su ID de pedido como referencia de pago. Su pedido no se enviará
-												hasta que los fondos se hayan liquidado en nuestra cuenta.</p>
-										</div>
-									</div>
-								</div>
-
-								<div class="border p-3 mb-5">
-									<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse"
-											href="#collapsepaypal" role="button" aria-expanded="false"
-											aria-controls="collapsepaypal">Paypal</a></h3>
-
-									<div class="collapse" id="collapsepaypal">
-										<div class="py-2">
-											<p class="mb-0">Realice su pago directamente en nuestra cuenta bancaria.
-												Utilice su ID de pedido como referencia de pago. Su pedido no se enviará
-												hasta que los fondos se hayan liquidado en nuestra cuenta.</p>
-										</div>
-									</div>
-								</div>
-
-								<div class="form-group">
-									<button class="btn btn-black btn-lg py-3 btn-block"
-										onclick="window.location='thankyou.html'">Realizar pedido</button>
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-				</div>
+				<!-- </form> -->
 			</div>
-			<!-- </form> -->
-		</div>
+		</form>
 	</div>
 
 
