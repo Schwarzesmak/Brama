@@ -60,6 +60,41 @@
 </head>
 
 <body>
+    <!-- Start Header/Navigation -->
+    <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
+
+        <div class="container">
+            <a class="navbar-brand" href="#">Brama Admin<span>.</span></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
+                aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsFurni">
+                <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="panelcontrolestadocompra.html">Estado de Compra</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="panelcontrolusuarios.html">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="panelcontrolagregararmas.html">Agregar Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="panelcontroleditararmas.html">Editar Producto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="panelcerrasesion.html">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+    <!-- End Header/Navigation -->
+
     <div class="container">
         <h1>Lista de Productos</h1>
         <table class="product-table">
@@ -73,10 +108,13 @@
             </thead>
             <tbody>
                 <!-- Producto 1 (Beretta) -->
+
                 <tr id="producto1">
                     <td>Beretta</td>
                     <td id="precioBeretta">$144.000</td>
-                    <td><input type="text" class="form-control" id="nuevoPrecioBeretta" placeholder="Nuevo Precio"></td>
+                    <td><input type="text" class="form-control" id="nuevoPrecioBeretta" placeholder="Nuevo Precio"
+                            required>
+                    </td>
                     <td>
                         <button onclick="actualizarPrecio('nuevoPrecioBeretta', 'precioBeretta')"
                             class="btn btn-primary">Editar</button>
@@ -166,28 +204,31 @@
         </table>
 
         <h1>Editar Arma</h1>
-        <form>
+        <form action="panelcontrol.html" method="get">
             <div class="form-group">
                 <label for="armaNombre" class="form-label">Nombre del Arma</label>
-                <input type="text" class="form-control" id="armaNombre" placeholder="Ingrese el nombre del arma">
+                <input type="text" class="form-control" id="armaNombre" placeholder="Ingrese el nombre del arma"
+                    required>
             </div>
             <div class="form-group">
                 <label for="armaColor" class="form-label">Color del Arma</label>
-                <input type="text" class="form-control" id="armaColor" placeholder="Ingrese el color del arma">
+                <input type="text" class="form-control" id="armaColor" placeholder="Ingrese el color del arma" required>
             </div>
             <div class="form-group">
                 <label for="armaCalibre" class="form-label">Calibre</label>
-                <input type="text" class="form-control" id="armaCalibre" placeholder="Ingrese el calibre del arma">
+                <input type="text" class="form-control" id="armaCalibre" placeholder="Ingrese el calibre del arma"
+                    required>
             </div>
             <div class="form-group">
                 <label for="armaMaterial" class="form-label">Material del Arma</label>
-                <input type="text" class="form-control" id="armaMaterial" placeholder="Ingrese el material del arma">
+                <input type="text" class="form-control" id="armaMaterial" placeholder="Ingrese el material del arma"
+                    required>
             </div>
             <div class="form-group">
                 <label for="imagenArma" class="form-label">Imagen del Arma</label>
-                <input type="file" class="form-control" id="imagenArma">
+                <input type="file" class="form-control" id="imagenArma" required>
             </div>
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <input type="submit" value="Guardar Cambios" class="btn btn-primary">
             <a href="panelcontrol.html" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
