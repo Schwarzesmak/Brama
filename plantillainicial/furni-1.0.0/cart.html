@@ -180,7 +180,7 @@
 									<span class="text-black">Subtotal</span>
 								</div>
 								<div class="col-md-6 text-right">
-									<strong class="text-black" id="subtotal">$0</strong>
+									<strong class="text-black" id="subtotal" >$0 </strong>
 								</div>
 							</div>
 							<div class="row mb-5">
@@ -321,18 +321,29 @@ if (!window.hasDOMContentLoadedListener) {
             });
         }
 
-        function handleDecrease(event) {
-            const input = this.parentNode.parentNode.querySelector('.quantity-amount');
-            let quantity = parseInt(input.value);
-            if (quantity > 1) {
-                quantity--;
-                input.value = quantity;
-                const price = parseFloat(this.closest('tr').querySelector('.product-price').textContent.replace('$', '').replace('.', ''));
-                this.closest('tr').querySelector('.product-total').textContent = '$' + (price * quantity).toLocaleString();
-                updateTotal();
-            }
-        }
-
+		function handleDecrease(event) {
+			const input = this.parentNode.parentNode.querySelector('.quantity-amount');
+			let quantity = parseInt(input.value);
+			if (quantity > 1) {
+				quantity--;
+				input.value = quantity;
+				const price = parseFloat(this.closest('tr').querySelector('.product-price').textContent.replace('$', '').replace('.', ''));
+				this.closest('tr').querySelector('.product-total').textContent = '$' + (price * quantity).toLocaleString();
+				updateTotal();
+			} else if (quantity === 1) {
+				alert("La cantidad mínima permitida es 1. No puedes disminuir la cantidad más.");
+				// Aquí puedes agregar cualquier otra acción que desees tomar cuando la cantidad es 1
+			} else {
+				// Si la cantidad es menor que 1, establecemos la cantidad a 1
+				quantity = 1;
+				input.value = quantity;
+				const price = parseFloat(this.closest('tr').querySelector('.product-price').textContent.replace('$', '').replace('.', ''));
+				this.closest('tr').querySelector('.product-total').textContent = '$' + (price * quantity).toLocaleString();
+				updateTotal();
+			}
+		}
+		
+		
         function handleIncrease(event) {
             const input = this.parentNode.parentNode.querySelector('.quantity-amount');
             let quantity = parseInt(input.value);
