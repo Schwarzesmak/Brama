@@ -61,6 +61,7 @@ function validarCampo(expresion, input, mensaje) {
 // Validar cada campo mientras se escribe
 primer_nombre.addEventListener('input', () => validarCampo(expresiones.primer_nombre, primer_nombre, mensajes.primer_nombre));
 segundo_nombre.addEventListener('input', () => validarCampo(expresiones.segundo_nombre, segundo_nombre, mensajes.segundo_nombre));
+apellido.addEventListener('input',() => validarCampo(expresiones.apellido, apellido, mensajes.apellido));
 direccion.addEventListener('input', () => validarCampo(expresiones.direccion, direccion, mensajes.direccion));
 correo.addEventListener('input', () => validarCampo(expresiones.correo, correo, mensajes.correo));
 celular.addEventListener('input', () => validarCampo(expresiones.celular, celular, mensajes.celular));
@@ -80,23 +81,6 @@ formulario.addEventListener('submit', function(event) {
     validarCampo(expresiones.adicional, adicional, mensajes.adicional);
     validarCampo(expresiones.direccion2, direccion2, mensajes.direccion2);
     
-
-    // Validar el checkbox de términos y condiciones
-    if (!check.checked) {
-        check.classList.add('is-invalid');
-        check.classList.remove('is-valid');
-        const error = check.nextElementSibling;
-        if (!error || !error.classList.contains('invalid-feedback')) {
-            const divError = document.createElement('div');
-            divError.classList.add('invalid-feedback');
-            check.parentNode.appendChild(divError);
-        }
-        check.nextElementSibling.innerText = mensajes.check;
-    } else {
-        check.classList.remove('is-invalid');
-        check.classList.add('is-valid');
-    }
-
     // Si todos los campos son válidos, enviar el formulario
     if (primer_nombre.classList.contains('is-valid') &&
         segundo_nombre.classList.contains('is-valid') &&
