@@ -20,20 +20,20 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class="text-center mb-4">Registro</h1>
-                        <form action="index.html" method="get">
+                        <form action="index.html" method="get" id="formularioregistro">
                             <div class="mb-3">
-                                <label for="username" class="form-label">Crear nombre de usuario</label>
-                                <input type="text" class="form-control" id="username" name="nom" required
+                                <label for="usuario" class="form-label">Crear nombre de usuario</label>
+                                <input type="text" class="form-control" id="usuario" name="usuario" required
                                     maxlength="25">
                             </div>
                             <div class="mb-3">
-                                <label for="username" class="form-label">Correo electrónico</label>
-                                <input type="email" class="form-control" id="c_email_address" name="c_email_address"
+                                <label for="correo" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="correo" name="correo"
                                     required>
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="password" name="pass" required>
+                                <label for="contraseña" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="contraseña" name="contraseña" required>
                             </div>
                             <div class="text-center mt-3">
                                 <input type="submit" value="Iniciar Sesión" class="btn btn-primary w-100">
@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-
+    <script src="js/validacionregistro.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/tiny-slider.js"></script>
     <script src="js/custom.js"></script>
