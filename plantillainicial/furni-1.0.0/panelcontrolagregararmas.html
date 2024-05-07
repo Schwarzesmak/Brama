@@ -85,7 +85,7 @@
     <!-- End Header/Navigation -->
     <div class="container">
         <h1>Agregar Producto</h1>
-        <form action="panelcontrol.html" id="formProducto" method="get">
+        <form action=""  method="get">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre del Producto</label>
                 <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre del producto" required   >
@@ -106,7 +106,8 @@
                 <label for="imagen" class="form-label">Cargar imagen del producto</label>
                 <input type="file" class="form-control" id="imagen" accept="image/*" required>
             </div>
-            <input type="submit" value="Agregar producto" onclick="agregarProducto() " class="btn btn-primary">
+            <input type="submit" value="Agregar producto" onclick="agregarProducto(event)" class="btn btn-primary">
+
             <a href="panelcontrol.html" class="btn btn-primary">Volver</a>
         </form>
 
@@ -126,13 +127,15 @@
     </div>
 
     <script>
-        function agregarProducto() {
+        function agregarProducto(event) {
+            event.preventDefault(); // Prevenir el envío del formulario por defecto
+    
             const nombre = document.getElementById('nombre').value;
             const tipo = document.getElementById('tipo').value;
             const material = document.getElementById('material').value;
             const imagenFile = document.getElementById('imagen').files[0];
             const tablaProductos = document.getElementById('tablaProductos');
-
+    
             if (imagenFile) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
@@ -148,6 +151,7 @@
             }
         }
     </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
