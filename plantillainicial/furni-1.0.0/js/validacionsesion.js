@@ -47,7 +47,7 @@ function validarCampo(expresion, input, mensaje) {
     }
 }
 // Validar cada campo del formulario al enviarlo
-formulario.addEventListener('submit', function(event) {
+formulariosesion.addEventListener('submit', function(event) {
     event.preventDefault(); // Evitar el envío por defecto
 
     // Validar cada campo usando las expresiones regulares y las funciones de validación
