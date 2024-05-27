@@ -23,15 +23,12 @@
 
     <!-- Start Header/Navigation -->
     <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
-
         <div class="container">
             <a class="navbar-brand" href="#">Brama Admin<span>.</span></a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
                 aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarsFurni">
                 <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
                     <li class="nav-item ">
@@ -52,10 +49,8 @@
                 </ul>
             </div>
         </div>
-
     </nav>
     <!-- End Header/Navigation -->
-
 
     <div class="hero">
         <div class="container">
@@ -82,7 +77,6 @@
     <div class="row">
         <div class="col-sm-4 p-3">
             <div class="text-light bg-success rounded shadow border p-5">
-
                 <span id="spin" class="spinner-grow spinner-grow-sm"></span>
                 <span id="spintext">Cargando dolar...</span>
                 <p class="h5" id="dolar"></p>
@@ -91,7 +85,6 @@
         <!-- Cuadro de Información 2 -->
         <div class="col-sm-4 p-3">
             <div class="text-light bg-info rounded shadow border p-5">
-
                 <span id="spinuf" class="spinner-grow spinner-grow-sm"></span>
                 <span id="spintextuf">Cargando uf...</span>
                 <p class="h5" id="uf"></p>
@@ -106,96 +99,27 @@
                 </div>
             </div>
         </div>
-
-<!-- Cuadro de Información 4 -->
-<div class="col-md-6 mb-4">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Clima Actual</h5>
-            <div id="weatherData">
-                <p>Cargando...</p>
+        <!-- Cuadro de Información 4 -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Clima Actual</h5>
+                    <div id="weatherData">
+                        <p>Cargando...</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 
     <!-- Bootstrap JS -->
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Datos del gráfico (ejemplo)
-        var datos = {
-            labels: ['Armas', 'Ropa', 'Otros'],
-            datasets: [{
-                label: 'NÚMERO DE VENTAS',
-                backgroundColor: 'rgba(236, 33, 0, 0.8)', // Color del área
-                borderColor: 'rgba(0, 0, 0, 1)', // Color de la línea
-                borderWidth: 3,
-                data: [28, 12, 23] // Datos de ventas por mes
-            }]
-        };
-
-        var opciones = {
-            responsive: true,
-            maintainAspectRatio: false
-        };
-        var contexto = document.getElementById('miGrafico').getContext('2d');
-        var miGrafico = new Chart(contexto, {
-            type: 'bar', // Tipo de gráfico (puedes cambiarlo a 'bar', 'pie', etc.)
-            data: datos,
-            options: opciones
-        });
-    </script>
-    <script src="js/querys.js"></script>
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/querys.js"></script>
-    <script>
-        $(document).ready(function () {
-            var currentDateTime = new Date();
-            var formattedDateTime = currentDateTime.toLocaleString('es-ES');
-            $("#currentDateTime").text(formattedDateTime);
-
-            $.getJSON('https://digidates.de/api/v1/unixtime', function (data) {
-                console.log("Datos recibidos:", data);
-                $("#unixTimeText").text("Unix time actual: " + data.time);
-            }).fail(function () {
-                console.log("Error al cargar los datos del API de digidates.");
-                $("#unixTimeText").text("Error al cargar los datos");
-            });
-        });
-    </script>
-<script>
-    const apiKey = 'cc45799586736f73cd1770474d4d58ca';
-    const city = 'Concepcion'; // Cambia la ciudad según tu ubicación
-
-    // Construir la URL de la solicitud
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=es&units=metric`;
-
-    // Realizar la solicitud a la API
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-
-            // Extraer los datos necesarios
-            const temperatura = data.main.temp;
-            const descripcion = data.weather[0].description;
-
-            // Mostrar los datos en el documento HTML
-            const weatherData = document.getElementById('weatherData');
-            weatherData.innerHTML = `<p>Temperatura: ${temperatura}°C</p>
-                                     <p>Descripción: ${descripcion}</p>`;
-        })
-        .catch(error => {
-            console.log('Error al obtener los datos del clima:', error);
-            const weatherData = document.getElementById('weatherData');
-            weatherData.innerHTML = '<p>Ocurrió un error al cargar los datos del clima</p>';
-        });
-</script>
-
-
+    <!-- Archivo JavaScript separado -->
+    <script src="js/panelcontrol.js"></script>
 </body>
 
 </html>
